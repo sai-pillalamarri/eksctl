@@ -1,4 +1,4 @@
-data "aws_ami" "image" {
+data "aws_ami" "joindevops" {
   most_recent = true
   owners      = ["973714476881"]
 
@@ -16,7 +16,6 @@ data "aws_ami" "image" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-
 }
 
 data "http" "my_public_ip" {

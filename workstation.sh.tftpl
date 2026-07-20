@@ -27,30 +27,30 @@ chmod +x ./kubectl
 cp kubectl /usr/local/bin/kubectl
 
 
-# # AWS CLI configure for ec2-user
-# mkdir -p /home/ec2-user/.aws
-# cat <<EOF > /home/ec2-user/.aws/credentials
-# [default]
-# aws_access_key_id = ${aws_access_key}
-# aws_secret_access_key = ${aws_secret_key}
-# EOF
+# AWS CLI configure for ec2-user
+mkdir -p /home/ec2-user/.aws
+cat <<EOF > /home/ec2-user/.aws/credentials
+[default]
+aws_access_key_id = ${aws_access_key}
+aws_secret_access_key = ${aws_secret_key}
+EOF
 
-# cat <<EOF > /home/ec2-user/.aws/config
-# [default]
-# region = us-east-1
-# output = json
-# EOF
+cat <<EOF > /home/ec2-user/.aws/config
+[default]
+region = us-east-1
+output = json
+EOF
 
-# chown -R ec2-user:ec2-user /home/ec2-user/.aws
-# chmod 600 /home/ec2-user/.aws/credentials
-# chmod 600 /home/ec2-user/.aws/config
+chown -R ec2-user:ec2-user /home/ec2-user/.aws
+chmod 600 /home/ec2-user/.aws/credentials
+chmod 600 /home/ec2-user/.aws/config
 
-# # Clone eksctl repo and create EKS cluster
-# cd /home/ec2-user
-# sudo -u ec2-user git clone https://github.com/sai-pillalamarri/eksctl.git
-# cd eksctl
-# sudo -u ec2-user /usr/local/bin/eksctl create cluster -f eksctl.yaml
+# Clone eksctl repo and create EKS cluster
+cd /home/ec2-user
+sudo -u ec2-user git clone https://github.com/daws-90s/eksctl.git
+cd eksctl
+sudo -u ec2-user /usr/local/bin/eksctl create cluster -f eksctl.yaml
 
-# # Authenticate kubectl with the cluster
-# sudo -u ec2-user aws eks update-kubeconfig --region us-east-1 --name roboshop
-# sudo -u ec2-user /usr/local/bin/kubectl get nodes
+# Authenticate kubectl with the cluster
+sudo -u ec2-user aws eks update-kubeconfig --region us-east-1 --name roboshop
+sudo -u ec2-user /usr/local/bin/kubectl get nodes

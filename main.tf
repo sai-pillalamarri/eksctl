@@ -58,7 +58,7 @@ resource "aws_security_group" "workstation" {
   }
 }
 
-/* resource "terraform_data" "cluster_destroy" {
+resource "terraform_data" "cluster_destroy" {
   input = {
     host     = aws_instance.workstation.public_ip
     password = var.ssh_password
@@ -76,4 +76,4 @@ resource "aws_security_group" "workstation" {
       password = self.input.password
     }
   }
-} */
+}
